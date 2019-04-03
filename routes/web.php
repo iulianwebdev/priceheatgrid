@@ -14,3 +14,7 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+// normaly this would be a get request as well but we have data coming in
+$router->post('/data', 'DataController@show');
+$router->get('/data/labels', 'DataController@index');
