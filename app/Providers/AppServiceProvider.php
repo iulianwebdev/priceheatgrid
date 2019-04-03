@@ -8,11 +8,22 @@ class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
-     *
-     * @return void
      */
     public function register()
     {
-        //
+    }
+
+    public function boot()
+    {
+        $this->app['validator']->extend('arrayofints', function ($attribute, $value, $parameters) {
+            foreach ($value as $v) {
+                foreach ($v as $number) {
+                    if (!is_int($number)) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        });
     }
 }
