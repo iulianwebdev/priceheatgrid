@@ -23,16 +23,18 @@
 
 ### Building Phase ###
 #### Backend ####
-- [ ] set-up backend. Install Lumen.
+- [x] set-up backend. Install Lumen.
     Requirements:
     ```
         PHP >= 7.1.3
         OpenSSL PHP Extension
         PDO PHP Extension
         Mbstring PHP Extension
-- [ ] create tests for 2 end-points (one POST request and the other just a GET request)
-- [ ] implement both end-points to satisfy the tests
-- [ ] create an md5 hash of the file and save the processed results in cache to be served on subsequent requests (optional)
+- [x] create tests for 2 end-points (one POST request and the other just a GET request)
+- [x] implement both end-points to satisfy the tests
+- [x] implement validation
+- [ ] implement logic that would return the expected data format
+- [-] create an md5 hash of the file and save the processed results in cache to be served on subsequent requests (optional)
 
 
 #### Frontend ####

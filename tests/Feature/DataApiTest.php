@@ -7,7 +7,7 @@ class DataApiTest extends TestCase
     protected $postUri;
     protected $getUri;
 
-    protected function setUp() : void
+    protected function setUp(): void
     {
         parent::setUp();
         $this->postUri = '/data';
@@ -15,20 +15,7 @@ class DataApiTest extends TestCase
     }
 
     /**
-     * Test end-point method is accessible
-     *
-     * @return void
-     */
-    public function testEndPointExistsPOST()
-    {
-        $this->post('/data');
-        $this->assertResponseOk();
-    }
-
-    /**
-     * Test end-point for get is accessable
-     *
-     * @return void
+     * Test end-point for get is accessable.
      */
     public function testEndPointExistGET()
     {
@@ -49,15 +36,29 @@ class DataApiTest extends TestCase
         ]);
         $this->assertEquals($expected, $this->response->getContent());
     }
-    
+
+    /**
+     * check that validation works for non-int values.
+     */
     public function testShowDataValidatorBailsOnWrongDataType()
     {
         $data = [
             [1, 2, 3123],
-            ['a', 1, 2]
+            ['a', 1, 2],
         ];
         $this->post($this->postUri, compact('data'));
-
+        // dd($this->response);
         $this->assertResponseStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
+    }
+
+    public function testShowDataValidationPasses()
+    {
+        $data = [
+            [1, 2, 3123],
+            [1, 1, 2],
+        ];
+        $this->post($this->postUri, compact('data'));
+        // dd($this->response);
+        $this->assertResponseOk();
     }
 }

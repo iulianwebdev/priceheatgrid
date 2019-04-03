@@ -22,12 +22,10 @@ class DataController extends Controller
 
     public function show(Request $request)
     {
-        $validate = $this->validate($request, [
-            'data' => 'required|subarrays_of_ints'
-        ]);
 
-        dd($validate);
-        
+        $validator = $this->validate($request, [
+            'data' => 'sub_arrays_of_ints'
+        ]);
 
         return [];
     }
