@@ -5,9 +5,9 @@
     Prefered format:
 
     {
-        data: [{x:<int>, y:<int>, level: <int>}*]
+        data: [{x:<int>, y:<int>, value: <int>, level: <int>}*]
     }
-> 2. Another API endpoint would be ok to have to get the legend. What does the level mean.
+> 2. Another API endpoint would be ok to have to get the legend. Indexes would match the level value on the POST request.
 
     {
         data: ["0%-5%", "5%-25%", *]

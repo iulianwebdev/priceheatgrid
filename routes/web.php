@@ -1,4 +1,7 @@
 <?php
+use Illuminate\Support\Facades\Storage;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -11,10 +14,19 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
+// $router->get('/', function () use ($router) {
+//     return $router->app->version();
+// });
 
 // normaly this would be a get request as well but we have data coming in
-$router->post('/data', 'DataController@show');
-$router->get('/data/labels', 'DataController@index');
+
+$router->group(['prefix' => 'data'], function ($router) {
+    
+    $router->post('/', 'DataController@show');
+    $router->get('/labels', 'DataController@index');
+});
+
+$router->get('/{route:.*}/', function () {
+    $data = Storage::get('/data.txt');
+    return view('app', compact('data'));
+});

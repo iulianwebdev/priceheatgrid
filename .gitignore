@@ -1,8 +1,10 @@
 /vendor
 /.idea
 .editor*
+/public
 access.log
 error.log
 Homestead.json
 Homestead.yaml
 .env
+node_modules
