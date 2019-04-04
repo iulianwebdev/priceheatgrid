@@ -33,12 +33,31 @@
 - [x] create tests for 2 end-points (one POST request and the other just a GET request)
 - [x] implement both end-points to satisfy the tests
 - [x] implement validation
-- [ ] implement logic that would return the expected data format
+- [x] implement logic that would return the expected data format
 - [-] create an md5 hash of the file and save the processed results in cache to be served on subsequent requests (optional)
 
 
 #### Frontend ####
-- [ ] create a layout with a textarea and a **Show Data** button
-- [ ] create a function that sends out ajax request to the backend (POST and GET)
-- [ ] display data on the canvas
+- [x] create a layout with a textarea and a **Show Data** button
+- [x] create a function that sends out ajax request to the backend (POST and GET)
+- [x] display data on the canvas
 
+### Set up ###
+
+1. clone repository
+2. run commands
+
+``` composer install ```
+
+``` npm install ```
+
+``` npm run dev ```
+
+or 
+
+```npm run prod ```
+(for extra asset processing)
+
+3. spin up a server process or use php default one
+
+```php -S localhost:<port number> -t public```
