@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Managers\LevelManager;
 use App\Models\Level;
 use Illuminate\Http\Request;
+use App\Managers\DataManager;
 
 class DataController extends Controller
 {
@@ -27,7 +28,13 @@ class DataController extends Controller
             'data' => 'sub_arrays_of_ints'
         ]);
 
-        return [];
+        $this->levels
+            ->addLevel(new Level(0, 5))
+            ->addLevel(new Level(5, 25))
+            ->addLevel(new Level(25, 75))
+            ->addLevel(new Level(75, 95))
+            ->addLevel(new Level(95, 100));
+        return (new DataManager($this->levels))->process($request->data);
     }
 
     public function index()

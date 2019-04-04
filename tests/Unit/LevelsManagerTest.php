@@ -12,9 +12,14 @@ class LevelsManagerTest extends TestCase
         $this->levels = new LevelManager;
     }
 
-    public function testClassHasLabelMethod()
+    public function testClassHas_getLabel_Method()
     {
         $this->assertTrue(method_exists($this->levels, 'getLabels'));
+    }
+
+    public function testClassHas_getLevels_Method()
+    {
+        $this->assertTrue(method_exists($this->levels, 'getLevels'));
     }
 
     public function testLevelsReturnsAllLabels()
@@ -27,4 +32,5 @@ class LevelsManagerTest extends TestCase
 
         $this->assertEquals($expectedLabels, $this->levels->getLabels());
     }
+    
 }

@@ -12,6 +12,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        /** Add Filesystem support */
+        $this->app->configure('filesystems');
+
+        $this->app->singleton(
+            Illuminate\Contracts\Filesystem\Factory::class,
+            function ($app) {
+                return new Illuminate\Filesystem\FilesystemManager($app);
+            }
+        );
     }
 
     public function boot()

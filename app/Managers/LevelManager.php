@@ -2,7 +2,6 @@
 namespace App\Managers;
 
 use App\Contracts\Range;
-use App\Contracts\HasLabel;
 
 class LevelManager
 {
@@ -10,8 +9,44 @@ class LevelManager
     
     public function addLevel(Range $level)
     {
-        $this->levels[] = $level;
+        if (empty($this->levels)) {
+            $this->levels[] = $level;
+        } else {
+            $this->addSorted($level);
+        }
         return $this;
+    }
+
+    public function getLevels()
+    {
+        return $this;
+    }
+
+    /**
+     * Get the index of the level that includes the given value
+     *
+     * @param integer $value
+     * @return void
+     */
+    public function getLevelIndex(int $percentage)
+    {
+        $value = $percentage;
+        
+        if ($value <= 0) {
+            return 0;
+        }
+
+        $lastIndex = 0;
+        
+        foreach ($this->levels as $index => $level) {
+            $lastIndex = $index;
+
+            if ($value < $level->getMax() && $value >= $level->getMin()) {
+                break;
+            }
+        }
+
+        return $lastIndex;
     }
 
     public function getLabels()
@@ -20,5 +55,20 @@ class LevelManager
             $carry[] = $level->label();
             return $carry;
         }, []);
+    }
+
+    /**
+     * Adds levels in a sorted manner
+     *
+     * @param Range $level
+     * @return void
+     */
+    public function addSorted(Range $level)
+    {
+        if (array_last($this->levels)->getMax() <= $level->getMin()) {
+            $this->levels[] = $level;
+        } else {
+            array_unshift($this->levels, $level);
+        }
     }
 }
