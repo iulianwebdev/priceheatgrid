@@ -1,0 +1,56 @@
+@import '../css/reset.css';
+$base-color: #137dbb;
+$white: #fff;
+$spacer: 10px;
+
+.canvas-grid {
+    border: 1px solid $base-color;
+}
+
+.btn {
+    color: $white;
+    border: 0;
+    padding: $spacer $spacer*3;
+    background-color: $base-color;
+
+    &:hover {
+        background-color: lighten($base-color, 10%);
+    }
+}
+
+.wrapp {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+     > div {
+         padding: $spacer;
+     }
+     .left {
+        flex: 2 0 0;
+    }
+
+    .right {
+        flex: 1 0 0;
+
+        textarea {
+            width: 100%;
+            height: 80vh;
+            margin-bottom: $spacer;
+        }
+    }
+    .legend {
+        list-style: none;
+        display: flex;
+        justify-content: space-evenly;
+
+        li {
+            display: flex;
+        }
+        li i {
+            margin-right: 10px;
+            display: block;
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
