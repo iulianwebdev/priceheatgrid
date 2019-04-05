@@ -1,3 +1,12 @@
+## Challenge ##
+Create a small app to process and display data
+Assign different levels of gradation to each data row based on deviation from average.
+
+Use only Javascript and Sass for frontend
+Backend can be anything.
+
+**Implement both backend and frontend solution**
+
 ### Planing Phase ###
 > 1. Need a rest api endpoint to get the processed data from a json data set. 
     create a textarea that will hold data
@@ -34,7 +43,7 @@
 - [x] implement both end-points to satisfy the tests
 - [x] implement validation
 - [x] implement logic that would return the expected data format
-- [-] create an md5 hash of the file and save the processed results in cache to be served on subsequent requests (optional)
+- [ ] create an md5 hash of the file and save the processed results in cache to be served on subsequent requests (optional)
 
 
 #### Frontend ####
@@ -42,7 +51,7 @@
 - [x] create a function that sends out ajax request to the backend (POST and GET)
 - [x] display data on the canvas
 - [x] add option to keep or regenerate legend colors
-- [ ] handle request error messages
+- [x] handle request error messages
 
 ### Set up ###
 
