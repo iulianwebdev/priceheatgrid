@@ -25,8 +25,9 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        $ruleName = 'sub_arrays_of_three_ints';
         //split into 2 rules
-        Validator::extend('sub_arrays_of_three_ints', function ($attribute, $value, $parameters) {
+        Validator::extend($ruleName, function ($attribute, $value, $parameters) {
             foreach ($value as $v) {
                 if (count($v) !== 3) {
                     return false;
@@ -38,6 +39,10 @@ class AppServiceProvider extends ServiceProvider
                 }
             }
             return true;
+        });
+
+        Validator::replacer($ruleName, function ($message, $attribute, $rule, $parameters) {
+            return 'Data should be formated by 3 ints on a line.';
         });
     }
 }
