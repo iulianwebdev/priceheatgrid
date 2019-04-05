@@ -7,6 +7,12 @@ class LevelManager
 {
     protected $levels;
     
+    /**
+     * add level object
+     *
+     * @param Range $level
+     * @return void
+     */
     public function addLevel(Range $level)
     {
         if (empty($this->levels)) {
@@ -17,9 +23,14 @@ class LevelManager
         return $this;
     }
 
+    /**
+     * get the present levels
+     *
+     * @return array|null
+     */
     public function getLevels()
     {
-        return $this;
+        return $this->levels;
     }
 
     /**

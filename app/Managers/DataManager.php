@@ -39,6 +39,15 @@ class DataManager implements Processable
         $this->levelManager = $levelManager;
     }
 
+    /**
+     * creates data set by calculating
+     * how much the incoming value is greater than the average
+     *
+     * return array format [{x, y, value, level: levelIndex}, *]
+     *
+     * @param array $inputData
+     * @return array
+     */
     public function process(array $inputData) : array
     {
         
@@ -81,7 +90,7 @@ class DataManager implements Processable
     }
 
     private function populateNewDataWithTheRightLevels()
-    {   
+    {
         foreach ($this->inputData as $row) {
             $value = $this->extractValue($row);
             $this->newData[] = [
@@ -94,6 +103,13 @@ class DataManager implements Processable
         return $this->newData;
     }
 
+    /**
+     * get the right level index by the calculated percentage 
+     * from the presently attached levels
+     *
+     * @param integer $value
+     * @return void
+     */
     private function calculatelevel(int $value)
     {
         $percentage = round((($value - $this->average)  * 100) / $this->average);

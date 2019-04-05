@@ -5,6 +5,9 @@ use App\Models\Level;
 
 class LevelsManagerTest extends TestCase
 {
+    /**
+     * @var LevelManager
+     */
     protected $levels;
 
     protected function setUp(): void
@@ -20,6 +23,12 @@ class LevelsManagerTest extends TestCase
     public function testClassHas_getLevels_Method()
     {
         $this->assertTrue(method_exists($this->levels, 'getLevels'));
+    }
+
+    public function testManagerHasGetterFunctionForLevels()
+    {
+        $this->levels->addLevel(new Level(0, 20));
+        $this->assertIsArray($this->levels->getLevels());
     }
 
     public function testLevelsReturnsAllLabels()
