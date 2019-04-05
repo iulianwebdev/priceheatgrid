@@ -21,11 +21,41 @@ export default class App {
         this.labels = labels.data
         this.updateCanvas()
       }).catch(error => {
-        throw error
+        this.handleError(error)
       })
     })
   }
 
+  handleError (error) {
+    if (error.response) {
+      this.errorPopup = document.getElementById('popup')
+      if (!this.errorPopup) {
+        this.errorPopup = document.createElement('div')
+        this.errorPopup.id = 'popup'
+        this.errorPopupMessage = document.createElement('div')
+        this.errorPopupClose = document.createElement('i')
+        this.errorPopupClose.innerText = 'Close'
+        this.errorPopupClose.id = 'closePopup'
+        this.errorPopupClose.addEventListener('click', e => this.closePopup())
+        this.errorPopup.appendChild(this.errorPopupClose)
+        this.errorPopup.appendChild(this.errorPopupMessage)
+
+        document.body.appendChild(this.errorPopup)
+      }
+      let message = error.response.data.data.join('<br>')
+
+      this.errorPopupMessage.innerHTML = `<p>${message}</p>`
+      this.errorPopup.classList.add('open')
+      document.body.classList.add('blur')
+    } else {
+      throw error
+    }
+  }
+
+  closePopup () {
+    this.errorPopup.classList.remove('open')
+    document.body.classList.remove('blur')
+  }
   /**
    * get all data needed for the chart
    * @returns {Promise}

@@ -1,0 +1,17 @@
+.legend {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 800px;
+
+    li {
+        display: flex;
+    }
+
+    li i {
+        margin-right: 10px;
+        display: block;
+        width: 20px;
+        height: 20px;
+    }
+}

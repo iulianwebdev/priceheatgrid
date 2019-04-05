@@ -1,7 +1,7 @@
 @import '../css/reset.css';
-$base-color: #137dbb;
-$white: #fff;
-$spacer: 10px;
+@import './variables.scss';
+@import './mixins.scss';
+@import './components/popup.scss';
 
 .canvas-grid {
     border: 1px solid $base-color;
@@ -19,6 +19,8 @@ $spacer: 10px;
 }
 
 .wrapp {
+    @import './components/legend.scss';
+
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -36,22 +38,6 @@ $spacer: 10px;
             width: 100%;
             height: 80vh;
             margin-bottom: $spacer;
-        }
-    }
-    .legend {
-        list-style: none;
-        display: flex;
-        justify-content: space-evenly;
-        max-width: 800px;
-
-        li {
-            display: flex;
-        }
-        li i {
-            margin-right: 10px;
-            display: block;
-            width: 20px;
-            height: 20px;
         }
     }
 }
