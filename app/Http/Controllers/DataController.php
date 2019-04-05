@@ -25,7 +25,7 @@ class DataController extends Controller
     {
 
         $validator = $this->validate($request, [
-            'data' => 'sub_arrays_of_ints'
+            'data' => 'sub_arrays_of_three_ints'
         ]);
 
         $this->levels

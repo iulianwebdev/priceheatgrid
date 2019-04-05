@@ -25,7 +25,7 @@ export default class App {
       })
     })
   }
-  
+
   /**
    * get all data needed for the chart
    * @returns {Promise}
@@ -60,8 +60,13 @@ export default class App {
     } else {
       this.canvas.resetStage()
     }
+
     this.canvas.drawGrid()
-    this.generateColorsForLabels()
+
+    if (this.shouldGenerateColors()) {
+      this.generateColorsForLabels()
+    }
+
     this.buildLegend()
 
     this.data.forEach(val => {
@@ -82,8 +87,18 @@ export default class App {
     })
   }
 
+  /**
+   * generate a random hex color value
+   */
   generateColorsForLabels () {
     this.colors = Array.from(this.labels, _ => '#000000'.replace(/0/g, _ => (~~(Math.random() * 16)).toString(16)))
+  }
+
+  shouldGenerateColors () {
+    if (!this.colors) {
+      return true
+    }
+    return document.getElementById('save-colors').checked
   }
 
   /**

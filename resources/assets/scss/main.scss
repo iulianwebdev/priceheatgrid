@@ -42,6 +42,7 @@ $spacer: 10px;
         list-style: none;
         display: flex;
         justify-content: space-evenly;
+        max-width: 800px;
 
         li {
             display: flex;

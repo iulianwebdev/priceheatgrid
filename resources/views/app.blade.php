@@ -17,6 +17,10 @@
         </div>
         <div class="right">
             <textarea id="data-field" class="data-display">{{$data}}</textarea>
+            <label for="save-colors">
+                <input id="save-colors" type="checkbox" />
+                Generate new colors
+            </label>
             <button id="submit-data" class="btn">Submit Data</button>
         </div>
     </div>

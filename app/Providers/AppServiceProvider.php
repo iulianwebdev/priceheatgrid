@@ -25,8 +25,12 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        Validator::extend('sub_arrays_of_ints', function ($attribute, $value, $parameters) {
+        //split into 2 rules
+        Validator::extend('sub_arrays_of_three_ints', function ($attribute, $value, $parameters) {
             foreach ($value as $v) {
+                if (count($v) !== 3) {
+                    return false;
+                }
                 foreach ($v as $number) {
                     if (!is_int($number)) {
                         return false;
