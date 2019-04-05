@@ -20,6 +20,7 @@ mix.browserSync({
     './resources/assets/js/**/*.js',
     './resources/assets/css/*.css',
     './resources/assets/scss/*.scss',
+    './resources/assets/scss/**/*.scss',
     './resources/views/*.blade.php'
   ]
 })
