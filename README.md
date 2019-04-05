@@ -41,6 +41,7 @@
 - [x] create a layout with a textarea and a **Show Data** button
 - [x] create a function that sends out ajax request to the backend (POST and GET)
 - [x] display data on the canvas
+- [ ] add option to keep or regenerate legend colors
 
 ### Set up ###
 
